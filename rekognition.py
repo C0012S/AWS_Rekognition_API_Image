@@ -8,7 +8,7 @@ with open('credentials.csv', 'r') as input:
         access_key_id = line[2]
         secret_access_key = line[3]
 
-photo = 'celebrity.jpg'
+photo = 'TomHolland_and_Zendaya.jpg'
 
 client = boto3.client('rekognition',
                       aws_access_key_id = access_key_id,
@@ -21,4 +21,8 @@ response = client.recognize_celebrities(Image={'S3Object': {
         }}
                                                     )
 
-print(response)
+# print(response) # 한 사람의 결과만 출력한다
+for key, value in response.items(): # 전체 사람의 결과를 출력한다
+    if key == 'CelebrityFaces':
+        for people in value:
+            print(people)
