@@ -25,7 +25,8 @@ response = client.compare_faces(
     TargetImage={
         'S3Object': {
             'Bucket': 'cookies-bucket',
-            'Name': 'JiJinJung.jpg' # 비교 대상 이미지
+            # 'Name': 'JiJinJung.jpg' # 비교 대상 이미지 # 같은 사람이 있는 사진 -> FaceMatches 값과 UnmatchedFaces 값이 출력된다
+            'Name': 'JM_V2.jpg' # 같은 사람이 없는 사진 -> UnmatchedFaces 값만 출력된다  # JM_V 사진은 Input Image 속 사람과 사진이 비슷하게 나왔는지 FaceMatches 값도 출력됐다(원래는 다른 사람)
         }
     }
                                                     )
